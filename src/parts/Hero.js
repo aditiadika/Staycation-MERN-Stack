@@ -1,22 +1,23 @@
 import React from "react";
 
-import HeroFrame from "assets/images/hero-frame.jpg";
-import HeroPicture from "assets/images/hero-picture.jpg";
+import Button from "elements/Button";
+import HeroFrame from "assets/images/hero_frame.jpg";
 import IconCities from "assets/images/icon/ic_cities.svg";
 import IconTraveller from "assets/images/icon/ic_traveler.svg";
 import IconTreasure from "assets/images/icon/ic_treasure.svg";
-
-import Button from "elements/Button";
+import HeroImage from "assets/images/hero_picture.jpg";
 
 export default function Hero(props) {
-  showMostPicked = () => {
-    window.scrollTo();
-  };
-
+  function showMostPicked() {
+    window.scrollTo({
+      top: props.refMostPicked.current.offsetTop - 30,
+      behavior: "smooth",
+    });
+  }
   return (
     <section className="container pt-4">
       <div className="row align-items-center">
-        <div className="col-auto pr-5" style={{ width: 422 }}>
+        <div className="col-auto pr-5" style={{ width: 530 }}>
           <h1 className="h2 font-weight-bold line-height-1 mb-3">
             Forget Busy Work, <br /> Start Next Vacation
           </h1>
@@ -32,6 +33,58 @@ export default function Hero(props) {
           >
             Show Me Now
           </Button>
+
+          <div className="row mt-5">
+            <div className="col-auto" style={{ marginRight: 35 }}>
+              <img
+                src={IconTraveller}
+                alt="Travellers"
+                width="36"
+                height="36"
+              />
+              <h6 className="mt-3">
+                {props.data.travelers}
+                <span className="text-gray-500 font-weight-light">
+                  Travellers
+                </span>
+              </h6>
+            </div>
+
+            <div className="col-auto" style={{ marginRight: 35 }}>
+              <img src={IconTreasure} alt="Treasure" width="36" height="36" />
+              <h6 className="mt-3">
+                {props.data.treasures}
+                <span className="text-gray-500 font-weight-light">
+                  Treasures
+                </span>
+              </h6>
+            </div>
+
+            <div className="col-auto">
+              <img src={IconCities} alt="Travellers" width="36" height="36" />
+              <h6 className="mt-3">
+                {props.data.cities}
+                <span className="text-gray-500 font-weight-light">Cities</span>
+              </h6>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-6 pl-5">
+          <div style={{ width: 520, height: 410 }}>
+            <img
+              src={HeroImage}
+              alt="hero"
+              className="img-fluid position-absolute"
+              style={{ margin: "-30px 0 0 -30px", zIndex: 1 }}
+            />
+            <img
+              src={HeroFrame}
+              alt="hero_"
+              className="img-fluid position-absolute"
+              style={{ margin: "0 -15px -15px 0px" }}
+            />
+          </div>
         </div>
       </div>
     </section>
